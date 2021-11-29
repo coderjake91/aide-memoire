@@ -1,23 +1,36 @@
 //allow for the interance of the 'app' express server in server.js to be used in this router file
 const router = require('express').Router();
+const fs = require('fs');
+const path = require('path');
 const uniqid = require('uniqid');
 //interface with the faux database
 const { notes } = require('../../data/db.json');
 const { validateNewNote, 
-        createNewNote } = require('../../lib/notes');
+        createNewNote, 
+        findByIdAndDelete} = require('../../lib/notes');
 
 
 router.get('/notes', (req, res) => {
+    notesJSON = fs.readFileSync( path.join(__dirname, '../../data/db.json'), 'utf-8');
+    let notesObj = JSON.parse(notesJSON);
 
-    console.log(notes);
     //return all notes
-    if(notes.length != 0){
-        res.json(notes);
+    if(notesObj.notes.length != 0){
+        res.json(notesObj.notes);
     } else {
-        res.status(400).send('There are no stored notes!')
+        res.status(400).send('There are no more notes!');
     }
     
     
+});
+
+router.delete('/notes/:id', (req, res) => {
+    const noteFound = findByIdAndDelete(req.params.id);
+    if(noteFound) {
+        res.json(noteFound);
+    } else {
+        res.json(400).send('no note can be found with that ID!');
+    }
 });
 
 router.post('/notes', (req, res) => {
@@ -30,7 +43,7 @@ router.post('/notes', (req, res) => {
     if(!validateNewNote(req.body)){
         res.status(400).send('This Note is not properly formatted!');
     } else {
-        //add animal to json file and animals array in this function
+        //add notel to json file and notes array in this function
         const note = createNewNote(req.body, notes);
         console.log(note);
         res.json(note);
