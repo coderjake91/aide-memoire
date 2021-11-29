@@ -1,0 +1,26 @@
+{
+  "name": "aide-memoire",
+  "version": "1.0.0",
+  "description": "Note Taker application that can be used to write and save notes. This application uses an Express.js back end and will save and retrieve note data from a JSON file.",
+  "main": "server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderjake91/aide-memoire.git"
+  },
+  "keywords": [
+    "Express.js"
+  ],
+  "author": "coderjake91",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderjake91/aide-memoire/issues"
+  },
+  "homepage": "https://github.com/coderjake91/aide-memoire#readme"
+}
