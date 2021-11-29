@@ -1,6 +1,14 @@
-[
+{
+  "notes": [
     {
-        "title":"Test Title",
-        "text":"Test text"
+      "title": "Post-it Note",
+      "text": "Hello world! This is just a test!",
+      "id": "sktwi1yz3kwkak8zq"
+    },
+    {
+      "title": "New Note",
+      "text": "Hello this is my second note!",
+      "id": "sktwi1z1gkwkavw78"
     }
-]
+  ]
+}
